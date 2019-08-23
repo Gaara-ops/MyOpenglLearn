@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     include/shaders.cpp \
     CubicSplineSegment.cpp \
     Trackball.cpp \
-    TransferFunctionControlPoint.cpp
+    TransferFunctionControlPoint.cpp \
+    imageloader.cpp
 
 HEADERS  += mainwindow.h \
     include/display.hpp \
@@ -34,7 +35,8 @@ HEADERS  += mainwindow.h \
     fixedcamera.h \
     shader.h \
     Trackball.h \
-    TransferFunctionControlPoint.h
+    TransferFunctionControlPoint.h \
+    imageloader.h
 
 FORMS    += mainwindow.ui
 

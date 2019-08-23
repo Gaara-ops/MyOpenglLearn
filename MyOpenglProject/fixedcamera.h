@@ -1,12 +1,13 @@
 #pragma once
 
-#include <glad\glad.h>
+//#include <glad\glad.h>
 #include <glm\glm.hpp>
 #include <glm\gtc\matrix_transform.hpp>
 
 #include <vector>
+#include <QDebug>
 
-const float ZOOM = 45.0f;
+const float ZOOM = 100.0f;
 
 class FixedCamera
 {
@@ -45,12 +46,13 @@ public:
 	//Processes input received from a mouse scroll-wheel event. Only requires input on the vertical wheel-axis
 	void ProcessMouseScroll(float yoffset)
 	{
-		if (Zoom >= 1.0f && Zoom <= 45.0f)
+        qDebug() << "Zoom:" << Zoom;
+        if (Zoom >= 1.0f && Zoom <= 179.0f)
 			Zoom -= yoffset;
 		if (Zoom <= 1.0f)
 			Zoom = 1.0f;
-		if (Zoom >= 45.0f)
-			Zoom = 45.0f;
+        if (Zoom >= 179.0f)
+            Zoom = 179.0f;
 	}
 
 };
