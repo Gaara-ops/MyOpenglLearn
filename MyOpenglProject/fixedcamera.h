@@ -7,7 +7,7 @@
 #include <vector>
 #include <QDebug>
 
-const float ZOOM = 100.0f;
+const float ZOOM = 30.0f;
 
 class FixedCamera
 {
@@ -31,7 +31,8 @@ public:
 		Direction = glm::normalize(Position - TargetPos);
 		Right = glm::normalize(glm::cross(Direction, WorldUp));
 		Up = glm::normalize(glm::cross(Right, Direction));
-		Zoom = ZOOM;
+        Zoom = ZOOM;
+//        Zoom = 2;
 	}
 
 	glm::mat4 GetViewMatrix()
@@ -46,13 +47,20 @@ public:
 	//Processes input received from a mouse scroll-wheel event. Only requires input on the vertical wheel-axis
 	void ProcessMouseScroll(float yoffset)
 	{
-        qDebug() << "Zoom:" << Zoom;
+
+//        float tmpstep = yoffset/10.0;
+//        if(Zoom-tmpstep > 0){
+//            Zoom -= tmpstep;
+//        }
+//        qDebug() << "Zoom:" << Zoom << tmpstep;
+
         if (Zoom >= 1.0f && Zoom <= 179.0f)
-			Zoom -= yoffset;
-		if (Zoom <= 1.0f)
-			Zoom = 1.0f;
+            Zoom -= yoffset;
+        if (Zoom <= 1.0f)
+            Zoom = 1.0f;
         if (Zoom >= 179.0f)
             Zoom = 179.0f;
+
 	}
 
 };
