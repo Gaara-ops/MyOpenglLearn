@@ -12,4 +12,12 @@ void processInput(GLFWwindow *window){
         glfwSetWindowShouldClose(window, true);
 }
 
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset){
+
+}
+
+void processInput(GLFWwindow *window){
+
+}
+
 #endif // EVENTPROCESS_H

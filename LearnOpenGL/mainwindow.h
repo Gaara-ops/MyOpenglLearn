@@ -20,8 +20,6 @@ public:
     void SetArgInfo(int argc, char *argv[]);
 private:
     int Init();
-    int CreateVertexInfo(GLuint& VAO,GLuint& VBO);
-    int CreateTextureInfo(const char *strPath,GLuint& texID);
 private slots:
     void on_pushButton_clicked();
 

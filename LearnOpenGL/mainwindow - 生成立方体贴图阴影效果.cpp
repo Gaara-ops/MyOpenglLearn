@@ -23,7 +23,7 @@ const unsigned int SCR_WIDTH = 1280;
 const unsigned int SCR_HEIGHT = 720;
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 5.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 float lastX = (float)SCR_WIDTH / 2.0;
 float lastY = (float)SCR_HEIGHT / 2.0;
 bool firstMouse = true;
@@ -104,14 +104,14 @@ void MainWindow::on_pushButton_clicked()
     glEnable(GL_DEPTH_TEST);
     QString strshader = strResource + "shader/";
     Shader simpleDepthShader(
-                QString(strshader+"3.1.3.shadow_mapping_depth.vs").toStdString().c_str(),
-                QString(strshader+"3.1.3.shadow_mapping_depth.fs").toStdString().c_str());
+                QString(strshader+"3.1.2.shadow_mapping_depth.vs").toStdString().c_str(),
+                QString(strshader+"3.1.2.shadow_mapping_depth.fs").toStdString().c_str());
     Shader debugDepthQuad(
-                QString(strshader+"3.1.3.debug_quad.vs").toStdString().c_str(),
-                QString(strshader+"3.1.3.debug_quad_depth.fs").toStdString().c_str());
+                QString(strshader+"3.1.2.debug_quad.vs").toStdString().c_str(),
+                QString(strshader+"3.1.2.debug_quad_depth.fs").toStdString().c_str());
     Shader shader(
-                QString(strshader+"3.1.3.shadow_mapping.vs").toStdString().c_str(),
-                QString(strshader+"3.1.3.shadow_mapping.fs").toStdString().c_str());
+                QString(strshader+"3.1.2.shadow_mapping.vs").toStdString().c_str(),
+                QString(strshader+"3.1.2.shadow_mapping.fs").toStdString().c_str());
 
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
@@ -157,10 +157,8 @@ void MainWindow::on_pushButton_clicked()
     glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, SHADOW_WIDTH, SHADOW_HEIGHT, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
-    float borderColor[] = { 1.0, 1.0, 1.0, 1.0 };
-    glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
     // attach depth texture as FBO's depth buffer
     glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
