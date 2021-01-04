@@ -46,10 +46,12 @@ SOILDir = F:/opengl/Simple_OpenGL_Image_Library/qt5.3
 LearnOpenglDir = F:/opengl/learn/LearnOpenGL/includes
 INCLUDEPATH += $${LearnOpenglDir}/
 
+AssimplDir = F:/opengl/assimp-4.0.1/qt5.3/lib-release
 
 LIBS += -L$${FreeGlutDir}/lib libfreeglut
 LIBS += -L$${GlewDir}/lib libglew32
 LIBS += -L$${GLFWDir}/lib libglfw3
 LIBS += -L$${GLADDir}/lib libglad
 LIBS += -L$${SOILDir}/lib libSOIL
+LIBS += -L$${AssimplDir}/lib libassimp
 LIBS += -lopengl32 -lwinmm -lgdi32 -lm -lglu32

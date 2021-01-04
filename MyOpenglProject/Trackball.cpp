@@ -172,7 +172,7 @@ glm::quat Trackball::createWorldRotationQuat(glm::mat4 view_matrix, float deltaT
 	glm::vec3 axis = glm::mat3(glm::inverse(view_matrix)) * camAxis;
 	axis = glm::normalize(axis);
     std::cout << "angle:" << angle <<" rollSpeed:"<<rollSpeed<< std::endl;
-	_quat = glm::angleAxis(glm::degrees(angle) * rollSpeed * deltaTime, axis);
+    _quat = glm::angleAxis(glm::degrees(angle) * rollSpeed*10 * deltaTime, axis);
 	return _quat;
 }
 
